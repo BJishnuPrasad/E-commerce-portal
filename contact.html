@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us - BamBooz</title>
+    <link rel="stylesheet" href="web.css">
+</head>
+<body>
+
+<header>
+    <h1>BamBooz</h1>
+    <button id="darkModeBtn">🌙 Dark Mode</button>
+    <nav>
+        <ul class="menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wishlist.html">My Cart</a></li>
+            <li><a href="order.html">Orders</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html" class="active">Contact Us</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Customer Care</h2>
+    <p>Email: support@bambooz.com</p>
+    <p>Phone: +91 9876543210</p>
+
+    <h3>Report an Issue</h3>
+    <textarea placeholder="Describe your issue..." rows="5"></textarea>
+    <button>Submit</button>
+</main>
+
+<footer>
+    <p>&copy; 2025 BamBooz. All rights reserved.</p>
+</footer>
+
+<script>
+    const body = document.body;
+    const btn = document.getElementById("darkModeBtn");
+
+    if(localStorage.getItem("theme") === "dark"){
+        body.classList.add("dark");
+        btn.innerText = "☀️ Light Mode";
+    }
+
+    btn.onclick = function(){
+        body.classList.toggle("dark");
+
+        if(body.classList.contains("dark")){
+            localStorage.setItem("theme", "dark");
+            btn.innerText = "☀️ Light Mode";
+        } else {
+            localStorage.setItem("theme", "light");
+            btn.innerText = "🌙 Dark Mode";
+        }
+    };
+</script>
+
+</body>
+</html>

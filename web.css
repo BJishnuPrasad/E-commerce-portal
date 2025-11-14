@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f2f2f2;
+}
+
+header {
+    background: #7e1ae8;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Navigation */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.menu a:hover,
+.menu .active {
+    border-bottom: 2px solid white;
+}
+
+/* Main Container */
+main {
+    padding: 40px;
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+}
+
+.product-card button {
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    background: #7e1ae8;
+    color: rgb(182, 249, 255);
+    border: none;
+    cursor: pointer;
+}
+
+.product-card button:hover {
+    background: #d50e5b;
+}
+
+/* Forms */
+form {
+    width: 300px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+form input, textarea {
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    width: 100%;
+}
+
+button {
+    padding: 10px;
+    background: #e91361;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: #3cb015;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #7e1ae8;
+    color: white;
+    margin-top: 40px;
+}
+body.dark {
+    background: #111;
+    color: #eaeaea;
+}
+
+body.dark header {
+    background: #d50e5b;
+}
+
+body.dark .product-card {
+    background: #222;
+    color: white;
+}
+
+body.dark form input,
+body.dark textarea {
+    background: #222;
+    color: white;
+    border: 1px solid #555;
+}
+
+body.dark footer {
+    background:#d50e5b;
+}
+
+/* Dark Mode Button */
+#darkModeBtn {
+    background: white;
+    color: rgb(33, 210, 204);
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#darkModeBtn:hover {
+    opacity: 0.8;
+}
+
+body.dark #darkModeBtn {
+    background: #333;
+    color: white;
+}

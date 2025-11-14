@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - BamBooz</title>
+    <link rel="stylesheet" href="web.css">
+</head>
+<body>
+
+<header>
+    <h1>BamBooz</h1>
+    <button id="darkModeBtn">🌙 Dark Mode</button>
+    <nav>
+        <ul class="menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wishlist.html">My Cart</a></li>
+            <li><a href="order.html">Orders</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="registration.html" class="active">Register</a></li>
+
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Create Account</h2>
+
+    <form id="regForm">
+        <input type="text" id="name" placeholder="Full Name">
+        <input type="email" id="email" placeholder="Email ID">
+        <input type="text" id="phone" placeholder="Phone Number">
+        <input type="password" id="password" placeholder="Password (min 6 characters)">
+        <input type="password" id="confirm" placeholder="Confirm Password">
+        <button>Create Account</button>
+    </form>
+
+    <p id="regError" style="color: red;"></p>
+</main>
+
+<script>
+document.getElementById("regForm").onsubmit = function(e){
+    e.preventDefault();
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let pass = document.getElementById("password").value.trim();
+    let conf = document.getElementById("confirm").value.trim();
+
+    let err = document.getElementById("regError");
+
+    if(name === "" || email === "" || phone === "" || pass === "" || conf === ""){
+        err.innerText = "All fields are required!";
+        return;
+    }
+
+    if(!email.includes("@") || !email.includes(".")){
+        err.innerText = "Enter a valid email address!";
+        return;
+    }
+
+    if(phone.length !== 10 || isNaN(phone)){
+        err.innerText = "Phone number must be 10 digits!";
+        return;
+    }
+
+    if(pass.length < 6){
+        err.innerText = "Password must be at least 6 characters!";
+        return;
+    }
+
+    if(pass !== conf){
+        err.innerText = "Passwords do not match!";
+        return;
+    }
+
+    alert("Registration Successful!");
+};
+</script>
+
+<footer>
+    <p>&copy; 2025 BamBooz. All rights reserved.</p>
+</footer>
+
+<script>
+    const body = document.body;
+    const btn = document.getElementById("darkModeBtn");
+
+    if(localStorage.getItem("theme") === "dark"){
+        body.classList.add("dark");
+        btn.innerText = "☀️ Light Mode";
+    }
+
+    btn.onclick = function(){
+        body.classList.toggle("dark");
+
+        if(body.classList.contains("dark")){
+            localStorage.setItem("theme", "dark");
+            btn.innerText = "☀️ Light Mode";
+        } else {
+            localStorage.setItem("theme", "light");
+            btn.innerText = "🌙 Dark Mode";
+        }
+    };
+</script>
+
+</body>
+</html>

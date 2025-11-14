@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - BamBooz</title>
+    <link rel="stylesheet" href="web.css">
+</head>
+<body>
+
+<header>
+    <h1>BamBooz</h1>
+    <button id="darkModeBtn">🌙 Dark Mode</button>
+    <nav>
+        <ul class="menu">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="products.html" class="active">Products</a></li>
+            <li><a href="wishlist.html">My Cart</a></li>
+            <li><a href="order.html">Orders</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Our Products</h2>
+
+    <div class="product-grid">
+
+        <!-- PRODUCT 1 -->
+        <div class="product-card" 
+             data-id="1" 
+             data-name="Smart Watch" 
+             data-price="1399">
+            <img src="https://static1.pocketlintimages.com/wordpress/wp-content/uploads/2023/11/garmin-forerunner-965-for-gps-smartwatch.png">
+            <h3>Smart Watch</h3>
+            <p>₹1399</p>
+            <button class="addCartBtn">Add to Cart</button>
+        </div>
+
+        <!-- PRODUCT 2 -->
+        <div class="product-card" 
+             data-id="2" 
+             data-name="Yonex Badminton Racket" 
+             data-price="1899">
+            <img src="https://m.media-amazon.com/images/I/91LXqjgnTML._AC_SL1500_.jpg">
+            <h3>Yonex Badminton Racket</h3>
+            <p>₹1899</p>
+            <button class="addCartBtn">Add to Cart</button>
+        </div>
+
+        <!-- PRODUCT 3 -->
+        <div class="product-card" 
+             data-id="3" 
+             data-name="Keyboard" 
+             data-price="2499">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.jMIdc5abG13ht8mbt7p5UQHaFj?cb=ucfimg2ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3">
+            <h3>Keyboard</h3>
+            <p>₹2499</p>
+            <button class="addCartBtn">Add to Cart</button>
+        </div>
+
+        <!-- PRODUCT 4 -->
+        <div class="product-card" 
+             data-id="4" 
+             data-name="OnePlus 15" 
+             data-price="72499">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiUDbb1NbOVrQcguNXwNMVtBL7qc80NwbhT5qvXvehPTbhlo5ZZOcYCwFmGGU1xYF2-YaVJ6kBNKt1K4K4OnEeyXb2BP1DJ6ay9bBIe1GCQhohhsX-JCgUAVotLSj3LpTAVq89AitLuvqi6-YgeEVYS9Ra9PZQfFC6It1uPpELiUfd6Q3rocJ2kMArv9L4/s16000-rw/1000070440.png">
+            <h3>OnePlus 15</h3>
+            <p>₹72499</p>
+            <button class="addCartBtn">Add to Cart</button>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 BamBooz. All rights reserved.</p>
+</footer>
+
+<script>
+/* ---------------- DARK MODE ------------------ */
+const body = document.body;
+const btn = document.getElementById("darkModeBtn");
+
+if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark");
+    btn.innerText = "☀️ Light Mode";
+}
+
+btn.onclick = function () {
+    body.classList.toggle("dark");
+    if (body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        btn.innerText = "☀️ Light Mode";
+    } else {
+        localStorage.setItem("theme", "light");
+        btn.innerText = "🌙 Dark Mode";
+    }
+};
+
+/* ---------------- ADD TO CART ------------------ */
+const cartButtons = document.querySelectorAll(".addCartBtn");
+
+cartButtons.forEach(btn => {
+    btn.addEventListener("click", function () {
+
+        const product = this.parentElement;
+
+        let item = {
+            id: product.dataset.id,
+            name: product.dataset.name,
+            price: product.dataset.price
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Prevent duplicate items
+        let exists = cart.some(c => c.id === item.id);
+
+        if (!exists) {
+            cart.push(item);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(item.name + " added to cart!");
+        } else {
+            alert(item.name + " is already in your cart!");
+        }
+    });
+});
+</script>
+
+</body>
+</html>

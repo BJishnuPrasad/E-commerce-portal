@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - BamBooz</title>
+    <link rel="stylesheet" href="web.css">
+</head>
+<body>
+
+<header>
+    <h1>BamBooz</h1>
+    <nav>
+        <ul class="menu">
+            <li><a href="home.html" class="active">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="wishlist.html">My Cart</a></li>
+            <li><a href="order.html">Orders</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- DARK MODE BUTTON -->
+    <button id="darkModeBtn">🌙 Dark Mode</button>
+</header>
+
+<main>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Welcome to BamBooz</h2>
+        <p>Your one-stop shop for high-quality products at unbeatable prices.</p>
+        <a href="products.html" class="btn">Shop Now</a>
+    </section>
+
+    <!-- Highlights -->
+    <section class="features">
+        <div class="feature-card">
+            <h3>🔥 Best Deals</h3>
+            <p>Exclusive offers on electronics and accessories.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>🚚 Fast Delivery</h3>
+            <p>Get your orders delivered quickly and safely.</p>
+        </div>
+
+        <div class="feature-card">
+            <h3>💬 24/7 Support</h3>
+            <p>Our customer care is always here to help you.</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 BamBooz. All rights reserved.</p>
+</footer>
+
+<!-- DARK MODE SCRIPT -->
+<script>
+const body = document.body;
+const btn = document.getElementById("darkModeBtn");
+
+// Load theme
+if(localStorage.getItem("theme") === "dark"){
+    body.classList.add("dark");
+    btn.innerText = "☀️ Light Mode";
+}
+
+btn.onclick = function(){
+    body.classList.toggle("dark");
+
+    if(body.classList.contains("dark")){
+        localStorage.setItem("theme", "dark");
+        btn.innerText = "☀️ Light Mode";
+    } else {
+        localStorage.setItem("theme", "light");
+        btn.innerText = "🌙 Dark Mode";
+    }
+};
+</script>
+
+</body>
+</html>
